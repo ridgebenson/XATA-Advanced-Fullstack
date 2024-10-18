@@ -68,15 +68,52 @@ const tables = [
         definition: "CHECK ((length(xata_id) < 256))",
       },
     },
-    foreignKeys: {},
+    foreignKeys: {
+      teamId_link: {
+        name: "teamId_link",
+        columns: ["teamId"],
+        referencedTable: "Teams",
+        referencedColumns: ["xata_id"],
+        onDelete: "CASCADE",
+      },
+    },
     primaryKey: [],
     uniqueConstraints: {
+      Project__pgroll_new_projectId_key: {
+        name: "Project__pgroll_new_projectId_key",
+        columns: ["projectId"],
+      },
       _pgroll_new_Project_xata_id_key: {
         name: "_pgroll_new_Project_xata_id_key",
         columns: ["xata_id"],
       },
     },
     columns: [
+      {
+        name: "name",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "projectId",
+        type: "int",
+        notNull: true,
+        unique: true,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "teamId",
+        type: "link",
+        link: { table: "Teams" },
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: '{"xata.link":"Teams"}',
+      },
       {
         name: "xata_createdat",
         type: "datetime",
@@ -172,15 +209,60 @@ const tables = [
         definition: "CHECK ((length(xata_id) < 256))",
       },
     },
-    foreignKeys: {},
+    foreignKeys: {
+      adminId_link: {
+        name: "adminId_link",
+        columns: ["adminId"],
+        referencedTable: "Users",
+        referencedColumns: ["xata_id"],
+        onDelete: "CASCADE",
+      },
+    },
     primaryKey: [],
     uniqueConstraints: {
+      Teams__pgroll_new_teamId_key: {
+        name: "Teams__pgroll_new_teamId_key",
+        columns: ["teamId"],
+      },
       _pgroll_new_Teams_xata_id_key: {
         name: "_pgroll_new_Teams_xata_id_key",
         columns: ["xata_id"],
       },
     },
     columns: [
+      {
+        name: "adminId",
+        type: "link",
+        link: { table: "Users" },
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: '{"xata.link":"Users"}',
+      },
+      {
+        name: "description",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "name",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "teamId",
+        type: "int",
+        notNull: true,
+        unique: true,
+        defaultValue: null,
+        comment: "",
+      },
       {
         name: "xata_createdat",
         type: "datetime",
@@ -241,7 +323,7 @@ const tables = [
         name: "email",
         type: "text",
         notNull: true,
-        unique: true,
+        unique: false,
         defaultValue: null,
         comment: "",
       },
@@ -344,7 +426,6 @@ const DatabaseClient = buildClient();
 const defaultOptions = {
   databaseURL:
     "https://James-Wambua-s-workspace-nm4hu5.us-east-1.xata.sh/db/Task_Management_Db",
-    
 };
 
 export class XataClient extends DatabaseClient<DatabaseSchema> {
