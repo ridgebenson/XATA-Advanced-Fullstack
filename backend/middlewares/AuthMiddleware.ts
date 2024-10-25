@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { getXataClient } from '../src/xata';
 import dotenv from 'dotenv';
+
 dotenv.config();
 
 const client = getXataClient();
