@@ -63,9 +63,10 @@ Test demostration
    3. **User management page:**
      ![alt text](<backend/assets/manage users.png>)
 
-     ## Database Schema
+## Database Schema
       The database schema is as shown below
       ![alt text](image.png)
+      ![alt text](image-1.png)
 
      ## Explanation of the Relationships:
 User - Team: Many-to-Many via TeamMembers
@@ -74,8 +75,14 @@ Team - Project: One-to-Many
 A single Team can have multiple Projects.
 Project - Task: One-to-Many
 A single Project can have multiple Tasks.
-Task - User: One-to-One
-Each Task is assigned to a single User.
+
+      **Project - User:** Many-to-Many via Task
+
+        A single Project can have multiple Users, and a single User can be assigned to multiple Projects.
+
+      **Task - User:** One-to-One
+
+        Each Task is assigned to a single User.
 Task - Comment: One-to-Many
 A single Task can have multiple Comments.
 
