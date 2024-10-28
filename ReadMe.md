@@ -64,27 +64,33 @@ Test demostration
      ![alt text](<backend/assets/manage users.png>)
 
 ## Database Schema
-      The database schema is as shown below
-      ![alt text](image.png)
-      ![alt text](image-1.png)
 
-     ## Explanation of the Relationships:
-User - Team: Many-to-Many via TeamMembers
-User and Team are connected through TeamMembers.
-Team - Project: One-to-Many
-A single Team can have multiple Projects.
-Project - Task: One-to-Many
-A single Project can have multiple Tasks.
+  The database schema is as shown below
+  ![alt text](./backend/assets/image.png)
+  ![alt text](./backend/assets/image-1.png)
 
-      **Project - User:** Many-to-Many via Task
+## Explanation of the Relationships:
+**User - Team**: Many-to-Many via TeamMembers
+  A single User can be a member of multiple Teams, and a single Team can have multiple Users.
+  User and Team are connected through TeamMembers.
+  
+**Team - Project**: One-to-Many
+  A single Team can have multiple Projects.
 
-        A single Project can have multiple Users, and a single User can be assigned to multiple Projects.
+**Project - Task:** One-to-Many
+  A single Project can have multiple Tasks.
 
-      **Task - User:** One-to-One
+**Project - User:** Many-to-Many via Task
 
-        Each Task is assigned to a single User.
-Task - Comment: One-to-Many
-A single Task can have multiple Comments.
+  A single Project can have multiple Users, and a single User can be assigned to multiple Projects.
+
+**Task - User:** One-to-One
+
+  Each Task is assigned to a single User.
+
+**Task - Comment:** One-to-Many
+
+  A single Task can have multiple Comments.
 
 ## Acknowledgements
 
