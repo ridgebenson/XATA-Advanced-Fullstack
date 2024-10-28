@@ -63,6 +63,22 @@ Test demostration
    3. **User management page:**
      ![alt text](<backend/assets/manage users.png>)
 
+     ## Database Schema
+      The database schema is as shown below
+      ![alt text](image.png)
+
+     ## Explanation of the Relationships:
+User - Team: Many-to-Many via TeamMembers
+User and Team are connected through TeamMembers.
+Team - Project: One-to-Many
+A single Team can have multiple Projects.
+Project - Task: One-to-Many
+A single Project can have multiple Tasks.
+Task - User: One-to-One
+Each Task is assigned to a single User.
+Task - Comment: One-to-Many
+A single Task can have multiple Comments.
+
 ## Acknowledgements
 
 - [Urbanus Wambua](https://github.com/urbanus-dev)
